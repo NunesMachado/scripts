@@ -14,12 +14,14 @@ Para utilizar o executável, basta baixar o **simpleEnv.jar** e tambem o arquivo
 
 >java -jar simpleEnv.jar
 
-Dentro do jar, há um arquivo de configuração(properties), onde será possível definir as variáveis abaixo:
+No arquivo de configuração(properties) será possível definir as variáveis abaixo:
 
 CAMINHO_FONTES=/home/user/TesteSript
+
 > Esse parâmetro representa onde o script irá trabalhar para compor o ambiente.
 
 CAMINHO_MAVEN_SETTINGS=./settings.xml
+
 > Esse parâmetro representa o arquivo settings.xml utilizado em todos os ambientes do SVN. Será feito uma copia do mesmo apenas alterando o *localrepository*.
 
 CAMINHO_WORKSPACE_STANDARD=./workspace
