@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+/home/roberson.machado/ws/fontes/branches/v7.1.4.2-tecnew/workspace/.metadata/.plugins/org.eclipse.jdt.core

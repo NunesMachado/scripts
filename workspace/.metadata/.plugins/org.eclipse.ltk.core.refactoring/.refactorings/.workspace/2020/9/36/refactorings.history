@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 8 resources" deleteContents="false" description="Delete 8 resources" element1="/sim3g.cliente.pcsistemasgrade" element2="/sim3g.cliente.pcsistemasgrade.android" element3="/sim3g.cliente.pcsistemasgrade.pedido" element4="/sim3g.cliente.pcsistemasgrade.pedido.android" element5="/sim3g.cliente.pcsistemasgrade.pedido.logic" element6="/sim3g.cliente.pcsistemasgrade.pedido.web" element7="/sim3g.cliente.pcsistemasgrade.sync" element8="/sim3g.cliente.pcsistemasgrade.web" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="8" stamp="1599014433740"/>
+</session>
