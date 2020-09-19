@@ -8,9 +8,11 @@ Esqueleto:
 - maven
 - workspace
 
-A ideia é, com uma pasta de referência(fontes), o **script** irá varrer cada pasta e se não tiver o esqueleto acima será criado.
+A ideia é, com uma pasta de referência(fontes), o *script* irá varrer cada pasta e se não tiver o esqueleto acima será montado.
 
-Para utilizar o executável, basta baixar o simpleEnv.jar e como dica, adicionar como **script** para executar a cada 5 segundos. Desta forma, toda vez que uma nova pasta for criada dentro dos fontes, o ambiente será configurado.
+Para utilizar o executável, basta baixar o **simpleEnv.jar** e como dica, adicionar o *script* para executar a cada 5 segundos em seu ambiente *windows/linux*. Desta forma, toda vez que uma nova pasta for criada dentro dos fontes, o ambiente será configurado.
+
+>java -jar simpleEnv.jar
 
 Dentro do jar, há um arquivo de configuração(properties), onde será possível definir as variáveis abaixo:
 
