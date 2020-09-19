@@ -33,4 +33,4 @@ Caso executar a cada 5 segundo seja complicado, baixar o arquivo *env.sh*, e adi
 >
 >export PATH=$PATH:$SIMPLE_ENV
 
-Quando necessitar executar o *script* para atualizar o novo ambiente, basta abrir o console e digitar ./env
+Quando necessitar executar o *script* para atualizar o novo ambiente, basta abrir o console e digitar env.sh.
