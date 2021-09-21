@@ -18,8 +18,10 @@ import java.util.Scanner;
 
 public class Service {
 
+	private static final String SETTINGS_CHANGE = "S";
+	private static final String AMBIENTE_CREATE = "A";
 	private static final String WINDOWS_OS = "Windows";
-	private static final String JA_EXISTE = " já existe, por isso não será criado!";
+	private static final String JA_EXISTE = "Ja existe, por isso nao sera criado!";
 	private static final String SIMPLE_ENV_LOG = "> [SIMPLE_ENV] ";
 	private static final String CAMINHO_WORKSPACE_STANDARD = "CAMINHO_WORKSPACE_STANDARD";
 	private static final String CAMINHO_MAVEN_SETTINGS = "CAMINHO_MAVEN_SETTINGS";
@@ -85,7 +87,7 @@ public class Service {
 		File file = new File(caminho, nome);
 		if (!file.exists()) {
 			file.mkdir();
-			log("Diretório criado: " + nome);
+			log("Diretï¿½rio criado: " + nome);
 		} else {
 			log(nome + JA_EXISTE);
 		}
@@ -125,7 +127,7 @@ public class Service {
 			br.close();
 			bw.close();
 		} else {
-			log("Settings já existe! por isso não será copiado!");
+			log("Settings ja existe! por isso nao sera copiado!");
 		}
 	}
 
@@ -158,34 +160,48 @@ public class Service {
 	public static void main(String[] args) throws IOException {
 		Properties props = getProperties();
 		Service servico = new Service(props);
-		boolean stillRunning= true;	
-		Scanner scan = new Scanner(System.in);
-		while (stillRunning) {
-
-			log("Deseja criar um novo ambiente de configuração para o SVN  ou alterar config do settings? AMBIENTE(A), SETTINGS(S) ou EXIT para sair.");
-			String input = scan.next();
-		
-			if (input.equalsIgnoreCase("exit")) {				
-				scan.close();
-				stillRunning = false;
-			}
-			if (input.toUpperCase().equals("A")) {
+		if(args.length > 0) {
+			String input = args[0];
+			if(input.equalsIgnoreCase(AMBIENTE_CREATE)) {
 				servico.constroiAmbiente();
-			} else if(input.toUpperCase().equals("S")) {
-				servico.alteraSettings(scan);
-			} else {
-				stillRunning = false;
-				log("Input informado não encontrado!");
+			} else if(isSVN(input) || isGIT(input)) {
+				servico.mudaSettings(input);
 			}
+		}else {
+
+			boolean stillRunning= true;	
+			Scanner scan = new Scanner(System.in);
+			while (stillRunning) {
+
+				log("Deseja criar um novo ambiente de configuracao para o SVN  ou alterar config do settings? AMBIENTE(A), SETTINGS(S) ou EXIT para sair.");
+				String input = scan.next();
+			
+				if (input.equalsIgnoreCase("exit")) {				
+					scan.close();
+					stillRunning = false;
+				}
+				if (input.toUpperCase().equals(AMBIENTE_CREATE)) {
+					servico.constroiAmbiente();
+				} else if(input.toUpperCase().equals(SETTINGS_CHANGE)) {
+					servico.alteraSettings(scan);
+				} else {
+					stillRunning = false;
+					log("Input informado nao encontrado!");
+				}
+			}
+			
+			scan.close();
 		}
 		
-		scan.close();
-	}
 
+	}
 	private void alteraSettings(Scanner scan) throws IOException {
 		log("Alterar para SVN ou para GIT ?");
 		String input = scan.next();
+		mudaSettings(input);
+	}
 
+	private void mudaSettings(String input) throws IOException {
 		if(isSVN(input)){
 			File settingsSVN = new File(SVN_SETTINGS);
 			copy(settingsSVN, getCaminhoSettingMaven());
@@ -196,15 +212,15 @@ public class Service {
 			copy(settingsGit, getCaminhoSettingMaven());
 			log("alterado para settings GIT");
 		} else {
-			log("Input informado não existe!");
+			log("Input informado nao existe!");
 		}
 	}
 
-	private boolean isGIT(String input) {
+	private static boolean isGIT(String input) {
 		return input.toUpperCase().equals(GIT);
 	}
 
-	private boolean isSVN(String input) {
+	private static boolean isSVN(String input) {
 		return input.toUpperCase().equals(SVN);
 	}
 
